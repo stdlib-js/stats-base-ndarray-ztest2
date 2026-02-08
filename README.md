@@ -56,6 +56,11 @@ Here, `μX` and `μY` are the true population means of samples `X` and `Y`, resp
 ## Usage
 
 ```javascript
+import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@esm/index.mjs';
+```
+The previous example will load the latest bundled code from the esm branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/stats-base-ndarray-ztest2/tags). For example,
+
+```javascript
 import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@v0.1.1-esm/index.mjs';
 ```
 
@@ -143,7 +148,7 @@ import normal from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-normal@es
 import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
 import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
 import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
-import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@v0.1.1-esm/index.mjs';
+import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@esm/index.mjs';
 
 var opts = {
     'dtype': 'generic'
