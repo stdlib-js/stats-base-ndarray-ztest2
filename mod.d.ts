@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var strided = require( '@stdlib/stats-strided-ztest2' ).ndarray;
-
-
-// MAIN //
+import { typedndarray, ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Computes a two-sample Z-test for two one-dimensional ndarrays.
@@ -46,8 +38,8 @@ var strided = require( '@stdlib/stats-strided-ztest2' ).ndarray;
 *     -   a zero-dimensional ndarray specifying the known standard deviation of the first one-dimensional input ndarray.
 *     -   a zero-dimensional ndarray specifying the known standard deviation of the second one-dimensional input ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarrayLike} output ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Float64Results = require( '@stdlib/stats-base-ztest-two-sample-results-float64' );
@@ -92,32 +84,9 @@ var strided = require( '@stdlib/stats-strided-ztest2' ).ndarray;
 *
 * console.log( v.get().toString() );
 */
-function ztest2( arrays ) {
-	var sigmax;
-	var sigmay;
-	var alpha;
-	var diff;
-	var alt;
-	var out;
-	var x;
-	var y;
-
-	x = arrays[ 0 ];
-	y = arrays[ 1 ];
-	out = ndarraylike2scalar( arrays[ 2 ] );
-
-	alt = ndarraylike2scalar( arrays[ 3 ] );
-	alpha = ndarraylike2scalar( arrays[ 4 ] );
-	diff = ndarraylike2scalar( arrays[ 5 ] );
-	sigmax = ndarraylike2scalar( arrays[ 6 ] );
-	sigmay = ndarraylike2scalar( arrays[ 7 ] );
-
-	strided( numelDimension( x, 0 ), numelDimension( y, 0 ), alt, alpha, diff, sigmax, getData( x ), getStride( x, 0 ), getOffset( x ), sigmay, getData( y ), getStride( y, 0 ), getOffset( y ), out ); // eslint-disable-line max-len
-
-	return arrays[ 2 ];
-}
+declare function ztest2<T extends typedndarray<number>, U extends ndarray>( arrays: [ T, T, U, T, T, T, T, T ] ): U;
 
 
 // EXPORTS //
 
-module.exports = ztest2;
+export = ztest2;
