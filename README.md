@@ -49,14 +49,32 @@ Here, `μX` and `μY` are the true population means of samples `X` and `Y`, resp
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-ndarray-ztest2
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@deno/mod.js';
+var ztest2 = require( '@stdlib/stats-base-ndarray-ztest2' );
 ```
 
 #### ztest2( arrays )
@@ -64,21 +82,19 @@ import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-zte
 Computes a two-sample Z-test for two one-dimensional ndarrays.
 
 ```javascript
-import Float64Results from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-two-sample-results-float64@deno/mod.js';
-import resolveEnum from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-alternative-resolve-enum@deno/mod.js';
-import structFactory from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-struct-factory@deno/mod.js';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@deno/mod.js';
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@deno/mod.js';
+var Float64Results = require( '@stdlib/stats-base-ztest-two-sample-results-float64' );
+var resolveEnum = require( '@stdlib/stats-base-ztest-alternative-resolve-enum' );
+var structFactory = require( '@stdlib/array-struct-factory' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var vector = require( '@stdlib/ndarray-vector-ctor' );
+var ndarray = require( '@stdlib/ndarray-ctor' );
 
 var opts = {
     'dtype': 'generic'
 };
 
-var xbuf = [ 4.0, 4.0, 6.0, 6.0, 5.0 ];
-var x = new ndarray( opts.dtype, xbuf, [ 5 ], [ 1 ], 0, 'row-major' );
-
-var ybuf = [ 3.0, 3.0, 5.0, 7.0, 7.0 ];
-var y = new ndarray( opts.dtype, ybuf, [ 5 ], [ 1 ], 0, 'row-major' );
+var x = vector( [ 4.0, 4.0, 6.0, 6.0, 5.0 ], 'generic' );
+var y = vector( [ 3.0, 3.0, 5.0, 7.0, 7.0 ], 'generic' );
 
 var alt = scalar2ndarray( resolveEnum( 'two-sided' ), {
     'dtype': 'int8'
@@ -99,16 +115,16 @@ var bool = ( v === out );
 
 The function has the following parameters:
 
--   **arrays**: array-like object containing the following ndarrays in order:
+-   **arrays**: array-like object containing the following ndarrays:
 
-    1.  first one-dimensional input ndarray.
-    2.  second one-dimensional input ndarray.
-    3.  a zero-dimensional output ndarray containing a [results object][@stdlib/stats/base/ztest/two-sample/results/float64].
-    4.  a zero-dimensional ndarray specifying the alternative hypothesis.
-    5.  a zero-dimensional ndarray specifying the significance level.
-    6.  a zero-dimensional ndarray specifying the difference in means under the null hypothesis.
-    7.  a zero-dimensional ndarray specifying the known standard deviation of the first one-dimensional input ndarray.
-    8.  a zero-dimensional ndarray specifying the known standard deviation of the second one-dimensional input ndarray.
+    -   first one-dimensional input ndarray.
+    -   second one-dimensional input ndarray.
+    -   a zero-dimensional output ndarray containing a [results object][@stdlib/stats/base/ztest/two-sample/results/float64].
+    -   a zero-dimensional ndarray specifying the alternative hypothesis.
+    -   a zero-dimensional ndarray specifying the significance level.
+    -   a zero-dimensional ndarray specifying the difference in means under the null hypothesis.
+    -   a zero-dimensional ndarray specifying the known standard deviation of the first one-dimensional input ndarray.
+    -   a zero-dimensional ndarray specifying the known standard deviation of the second one-dimensional input ndarray.
 
 </section>
 
@@ -131,26 +147,24 @@ The function has the following parameters:
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import Float64Results from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-two-sample-results-float64@deno/mod.js';
-import resolveEnum from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-alternative-resolve-enum@deno/mod.js';
-import structFactory from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-struct-factory@deno/mod.js';
-import normal from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-normal@deno/mod.js';
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@deno/mod.js';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@deno/mod.js';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@deno/mod.js';
-import ztest2 from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest2@deno/mod.js';
+var Float64Results = require( '@stdlib/stats-base-ztest-two-sample-results-float64' );
+var resolveEnum = require( '@stdlib/stats-base-ztest-alternative-resolve-enum' );
+var structFactory = require( '@stdlib/array-struct-factory' );
+var normal = require( '@stdlib/random-normal' );
+var ndarray = require( '@stdlib/ndarray-ctor' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var ztest2 = require( '@stdlib/stats-base-ndarray-ztest2' );
 
 var opts = {
     'dtype': 'generic'
 };
 
 // Create one-dimensional ndarrays containing pseudorandom numbers drawn from a normal distribution:
-var xbuf = normal( 100, 0.0, 1.0, opts );
-var x = new ndarray( opts.dtype, xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
+var x = normal( [ 100 ], 0.0, 1.0, opts );
 console.log( ndarray2array( x ) );
 
-var ybuf = normal( 100, 0.0, 1.0, opts );
-var y = new ndarray( opts.dtype, ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
+var y = normal( [ 100 ], 0.0, 1.0, opts );
 console.log( ndarray2array( y ) );
 
 // Specify the alternative hypothesis:
@@ -198,7 +212,7 @@ console.log( v.get().toString() );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -261,7 +275,7 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-ndarray-ztest2/main/LICENSE
 
-[@stdlib/stats/base/ztest/two-sample/results/float64]: https://github.com/stdlib-js/stats-base-ztest-two-sample-results-float64/tree/deno
+[@stdlib/stats/base/ztest/two-sample/results/float64]: https://github.com/stdlib-js/stats-base-ztest-two-sample-results-float64
 
 </section>
 
