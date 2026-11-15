@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,12 +16,30 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { typedndarray, ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute a two-sample Z-test for two one-dimensional ndarrays.
+* Computes a two-sample Z-test for two one-dimensional ndarrays.
 *
-* @module @stdlib/stats-base-ndarray-ztest2
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   first one-dimensional input ndarray.
+*     -   second one-dimensional input ndarray.
+*     -   a zero-dimensional output ndarray containing a results object.
+*     -   a zero-dimensional ndarray specifying the alternative hypothesis.
+*     -   a zero-dimensional ndarray specifying the significance level.
+*     -   a zero-dimensional ndarray specifying the difference in means under the null hypothesis.
+*     -   a zero-dimensional ndarray specifying the known standard deviation of the first one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray specifying the known standard deviation of the second one-dimensional input ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Float64Results = require( '@stdlib/stats-base-ztest-two-sample-results-float64' );
@@ -30,7 +48,6 @@
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
 * var ndarray = require( '@stdlib/ndarray-ctor' );
-* var ztest2 = require( '@stdlib/stats-base-ndarray-ztest2' );
 *
 * var opts = {
 *     'dtype': 'generic'
@@ -65,12 +82,9 @@
 *
 * console.log( v.get().toString() );
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function ztest2<T extends ndarray = ndarray>( arrays: [ typedndarray<number>, typedndarray<number>, T, typedndarray<number>, typedndarray<number>, typedndarray<number>, typedndarray<number>, typedndarray<number> ] ): T;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = ztest2;
